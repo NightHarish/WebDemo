@@ -49,12 +49,19 @@
  <body>
     <h1>Welcome to Home Page</h1>
     <p>Please select the needed resources</p>
- </body>
- <div class="d-grid gap-3  col-4 mx-auto">
+    
+ 
+<div class="d-grid gap-3  col-4 mx-auto">
  <a href="/examrc" class="btn btn-primary btn-lg" role="button">Exam resources</a>
- <a href="/biblerc" class="btn btn-info btn-lg" role="button">Bible resources</a>
+ <a href="/gamerc" class="btn btn-danger btn-lg" role="button">Gamer's Galleria</a>
 </div>
+{% for each in myresult %}
+    <p> Creator: {{each[1]}}<p>
+    <p> Base: {{each[2]}}<p>
+    <p> Qualification: {{each[3]}}<p>
 
+    {% endfor %}
+</body>
 
   
 </html>
