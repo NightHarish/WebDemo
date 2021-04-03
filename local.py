@@ -33,6 +33,19 @@ def exam_resources():
    myresult = mycursor.fetchall()
    return render_template("indexx.html", myresult=myresult)
 
+@app.route('/movierc')
+def movie_resources():
+   mydb = mysql.connector.connect(
+   host="localhost",
+   user="root",
+   password="",
+   database="webdemo"
+   )
+   mycursor = mydb.cursor()
+   mycursor.execute("SELECT * FROM movieres")
+   myresult = mycursor.fetchall()
+   return render_template("index4.html", myresult=myresult)
+
 
 @app.route("/gamerc")
 def  gamer_resources():
