@@ -10,10 +10,10 @@
         {% for each in myresult %}
     <h2> GAME: {{each[1]}}</h2>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a href="https://playvalorant.com" class="btn btn-outline-warning btn-lg" role="button">Click here</a>
+        <a href="{{each[3]}}" class="btn btn-outline-warning btn-lg" role="button">Click here</a>
     </div>
     <p> About: {{each[2]}} <p>
-    <p> Source: {{each[3]}} <p>
+
     <p> Rating: {{each[4]}} <p>
     {% endfor %}
     </body>

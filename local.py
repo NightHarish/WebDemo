@@ -60,5 +60,10 @@ def  gamer_resources():
    myresult = mycursor.fetchall()
    return render_template("indexxx.html", myresult=myresult)
 
+@app.route("/tiles")
+def  tiles_resources():
+   
+   return render_template("tiles.html")
+
 if __name__ == '__main__':
    app.run(debug=True)
