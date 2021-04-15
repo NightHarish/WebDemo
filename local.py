@@ -1,20 +1,23 @@
-from flask import Flask, render_template
+from flask import Flask, request, redirect
+from flask import    render_template
 import mysql.connector
 
 
 
 
 app = Flask(__name__)
-
-@app.route('/')
-def hello_world():
-   mydb = mysql.connector.connect(
+mydb = mysql.connector.connect(
    host="localhost",
    user="root",
    password="",
    database="webdemo"
-   )
-   mycursor = mydb.cursor()
+)
+
+mycursor = mydb.cursor()
+
+
+@app.route('/')
+def hello_world():
    mycursor.execute("SELECT * FROM intro")
    myresult = mycursor.fetchall()
    return render_template("index.html", myresult=myresult)
@@ -22,12 +25,6 @@ def hello_world():
 
 @app.route('/examrc')
 def exam_resources():
-   mydb = mysql.connector.connect(
-   host="localhost",
-   user="root",
-   password="",
-   database="webdemo"
-   )
    mycursor = mydb.cursor()
    mycursor.execute("SELECT * FROM examres")
    myresult = mycursor.fetchall()
@@ -35,12 +32,6 @@ def exam_resources():
 
 @app.route('/movierc')
 def movie_resources():
-   mydb = mysql.connector.connect(
-   host="localhost",
-   user="root",
-   password="",
-   database="webdemo"
-   )
    mycursor = mydb.cursor()
    mycursor.execute("SELECT * FROM movieres")
    myresult = mycursor.fetchall()
@@ -49,21 +40,35 @@ def movie_resources():
 
 @app.route("/gamerc")
 def  gamer_resources():
-   mydb = mysql.connector.connect(
-   host="localhost",
-   user="root",
-   password="",
-   database="webdemo"
-   )
-   mycursor = mydb.cursor()
    mycursor.execute("SELECT * FROM games")
    myresult = mycursor.fetchall()
    return render_template("indexxx.html", myresult=myresult)
 
 @app.route("/tiles")
 def  tiles_resources():
-   
-   return render_template("tiles.html")
+   mycursor.execute("SELECT * FROM links")
+   myresult = mycursor.fetchall()
+   return render_template("tiles.html", myresult=myresult)
+
+@app.route('/tiles/<name>')
+def get_product(name):
+   mycursor.execute("""SELECT * FROM links where PK=%s""" % (int(name)))
+   myresult = mycursor.fetchall()
+   return render_template("article.html", myresult=myresult)
+
+@app.route('/input', methods=['GET', 'POST'])
+def inputs():
+    if request.method=='POST':
+        Subjects = request.form['Subjects']
+       # Resource1 = request.form['Resource 1']
+        Resource2 = request.form['Resource 2']
+        sql = "INSERT INTO links (Subjects, Resource 2) VALUES (%s, %s)"
+        val = (Subjects, Resource2)
+        mycursor.execute(sql, val)
+        mydb.commit()
+        return redirect("/tiles")
+    # print(mycursor.rowcount, "record inserted.")
+    return render_template('input.html')
 
 if __name__ == '__main__':
    app.run(debug=True)

@@ -46,20 +46,22 @@
   </nav>
 
   
- <body>
-    <h1>Welcome to FunHub</h1>
-    <p>The best site for all your entertainment needs</p>
+ <body style="background-color: rgb(8, 8, 8)" >
+  <h1 style="color:blue;">Welcome to FunHub</h1>
+    <p style="color:aliceblue">The best site for all your entertainment needs</p>
     
  
 <div class="d-grid gap-3  col-4 mx-auto">
- <a href="/examrc" class="btn btn-outline-primary btn-lg" role="button">Exam resources</a>
+ <a href="/examrc" class="btn btn-outline-primary btn-lg" role="button">Exam Details</a>
  <a href="/gamerc" class="btn btn-outline-danger btn-lg" role="button">Gamer's Galleria</a>
  <a href="/movierc" class="btn btn-outline-success btn-lg" role="button">Movie Markups</a>
+ <a href="/tiles" class="btn btn-outline-warning btn-lg" role="button">Study Centre</a>
+ 
 </div>
 {% for each in myresult %}
-    <p> Creator: {{each[1]}}<p>
-    <p> Base: {{each[2]}}<p>
-    <p> Qualification: {{each[3]}}<p>
+    <p style="color:aliceblue"> Creator: {{each[1]}}<p>
+    <p style="color:aliceblue"> Base: {{each[2]}}<p>
+    <p style="color:aliceblue"> Qualification: {{each[3]}}<p>
 
     {% endfor %}
 </body>
