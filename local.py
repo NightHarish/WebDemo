@@ -61,8 +61,8 @@ def inputs():
     if request.method=='POST':
         Subjects = request.form['Subjects']
        # Resource1 = request.form['Resource 1']
-        Resource2 = request.form['Resource 2']
-        sql = "INSERT INTO links (Subjects, Resource 2) VALUES (%s, %s)"
+        Resource2 = request.form['Resource_2']
+        sql = "INSERT INTO links (Subjects, Resource_2) VALUES (%s, %s)"
         val = (Subjects, Resource2)
         mycursor.execute(sql, val)
         mydb.commit()

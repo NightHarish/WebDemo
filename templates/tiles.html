@@ -14,14 +14,14 @@
 
 
   
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-2 row-cols-md-3 g-4">
   {% for each in myresult %}
     <div class="col">
       <div class="card">
         <img src="{{each[3]}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{each[1]}}</h5>
-          <a href="{{each[2]}}" class="btn btn-primary">Button</a>
+          <a href="/tiles/{{each[0]}}" class="btn btn-primary">Button</a>
         </div>
       </div>
       {% endfor %} 
